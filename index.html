@@ -1,220 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Squigler Coin | The Meme Coin Revolution 🪱</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Squigler Coin - The Meme Revolution</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
+      margin: 0;
       font-family: 'Press Start 2P', cursive;
-      background: radial-gradient(circle, #000000 0%, #111111 100%);
+      background: linear-gradient(135deg, #000000, #1c1c1c);
       color: #ffd700;
+      text-align: center;
       overflow-x: hidden;
     }
+    nav {
+      background: #111;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #ffd700;
+      text-decoration: none;
+    }
     header {
-      text-align: center;
+      background-color: #000;
       padding: 2rem;
-      background-color: #0a0a0a;
-      box-shadow: 0 0 20px gold;
+      animation: neon-pulse 2s infinite alternate;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
     }
     h1 {
       font-size: 2rem;
+      margin: 0;
     }
-    .intro {
-      text-align: center;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-      background-color: rgba(255, 215, 0, 0.1);
-      border-radius: 1rem;
-      box-shadow: 0 0 25px gold;
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
     }
     .coin-img {
       width: 200px;
-      animation: spin 8s linear infinite;
-      display: block;
-      margin: 2rem auto;
+      animation: floaty 3s infinite ease-in-out, spin 10s linear infinite;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      0% { transform: rotateY(0); }
+      100% { transform: rotateY(360deg); }
     }
-    .btn {
+    @keyframes neon-pulse {
+      0% {
+        box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700;
+      }
+      100% {
+        box-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700;
+      }
+    }
+    button {
       font-family: 'Press Start 2P', cursive;
+      font-size: 1rem;
       padding: 1rem 2rem;
       margin: 1rem;
-      font-size: 1rem;
-      background: gold;
+      background: #ffd700;
       color: #000;
       border: none;
       border-radius: 12px;
-      box-shadow: 0 0 15px gold;
       cursor: pointer;
+      box-shadow: 0 0 15px #ffd700;
+      transition: all 0.3s ease;
     }
-    section {
-      padding: 4rem 2rem;
-      background-color: #0d0d0d;
-      margin: 2rem 0;
+    button:hover {
+      background: #ffcc00;
+      box-shadow: 0 0 25px #ffd700;
     }
-    section h2 {
-      color: #fff;
-      text-align: center;
-      margin-bottom: 1rem;
+    .section {
+      padding: 3rem 1rem;
     }
-    .features {
+    .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .feature-box {
-      background: #1a1a1a;
-      padding: 2rem;
-      border: 2px solid gold;
-      border-radius: 10px;
-      box-shadow: 0 0 20px gold;
+    .feature {
+      background: rgba(255, 215, 0, 0.05);
+      border: 2px dashed #ffd700;
+      padding: 1.5rem;
+      border-radius: 15px;
     }
     footer {
-      text-align: center;
+      margin-top: 3rem;
       padding: 2rem;
-      background: #0a0a0a;
+      font-size: 0.8rem;
       color: #aaa;
+    }
+    .glow {
+      text-shadow: 0 0 10px #ffd700;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🚀 Squigler Coin: The Rise of the Meme Worm 🪱</h1>
-    <p>Your favorite meme token is crawling to the moon 🌕</p>
+  <nav>
+    <a href="#home">🏠 Home</a>
+    <a href="#tokenomics">📊 Tokenomics</a>
+    <a href="#roadmap">🗺️ Roadmap</a>
+  </nav>
+  <header id="home">
+    <h1>🚀 Squigler Coin</h1>
+    <p class="glow">The Meme Revolution Has Begun 🪱</p>
   </header>
-
-  <div class="intro">
+  <section class="section">
     <img class="coin-img" src="https://raw.githubusercontent.com/squiglercoin/assets/main/squigcoin.png" alt="Squigler Coin">
-    <p>Squigler (SQUIG) is the next-generation meme coin built for the community. Fair launch. No team wallets. Just Squigs.</p>
-    <button class="btn" onclick="connectWallet()">🔌 Connect Wallet</button>
-    <button class="btn" onclick="buyTokens()">💰 Buy $SQUIG</button>
-    <p id="walletAddress">Wallet Not Connected</p>
-  </div>
-
-  <section>
-    <h2>💡 About Squigler</h2>
-    <div class="features">
-      <div class="feature-box">
-        <h3>🐛 Meme Energy</h3>
-        <p>Powered by the internet’s funniest, squirmiest mascot.</p>
-      </div>
-      <div class="feature-box">
-        <h3>💸 Fair Launch</h3>
-        <p>No pre-mine, no VCs, just pure Squig love.</p>
-      </div>
-      <div class="feature-box">
-        <h3>🎁 Community Airdrops</h3>
-        <p>Over 1,000,000 SQUIG already given out — and more coming!</p>
-      </div>
-      <div class="feature-box">
-        <h3>🔥 Tokenomics</h3>
-        <p>3% transaction fee funds growth, marketing, and worms.</p>
-      </div>
-      <div class="feature-box">
-        <h3>📈 Liquidity Plans</h3>
-        <p>Liquidity added and locked post-presale. Safe, secure, and smart.</p>
-      </div>
-      <div class="feature-box">
-        <h3>🎮 Gamification</h3>
-        <p>Community contests, meme wars, and SQUIG battles.</p>
-      </div>
+    <h2>🔥 1 ETH = 1,000,000 SQUIG</h2>
+    <p>Presale ends June 30, 2025</p>
+    <p>📣 Already Raised: $16,000+</p>
+    <p>🎁 1,000,000 $SQUIG in Airdrops!</p>
+  </section>
+  <section id="tokenomics" class="section">
+    <h2>📊 Tokenomics</h2>
+    <div class="feature-grid">
+      <div class="feature">🔢 Total Supply: 1,000,000,000 SQUIG</div>
+      <div class="feature">💼 Team Allocation: 10%</div>
+      <div class="feature">📣 Marketing: 15%</div>
+      <div class="feature">🎁 Airdrops: 10%</div>
+      <div class="feature">💧 Liquidity: 25%</div>
+      <div class="feature">💥 Burn Reserve: 15%</div>
+      <div class="feature">🛠️ Development: 10%</div>
+      <div class="feature">🗳️ DAO Treasury: 15%</div>
     </div>
   </section>
-
-  <section>
-    <h2>📊 Roadmap</h2>
-    <div class="features">
-      <div class="feature-box">
-        <h3>PHASE 1</h3>
-        <ul>
-          <li>Token Launch</li>
-          <li>1M Airdrop Campaign</li>
-          <li>Website + Presale Portal</li>
-          <li>Community Building</li>
-        </ul>
-      </div>
-      <div class="feature-box">
-        <h3>PHASE 2</h3>
-        <ul>
-          <li>Uniswap Listing</li>
-          <li>CMC/CG Listings</li>
-          <li>Meme & Design Contests</li>
-          <li>Flash Drops + Partnerships</li>
-        </ul>
-      </div>
-      <div class="feature-box">
-        <h3>PHASE 3</h3>
-        <ul>
-          <li>Worm NFTs</li>
-          <li>Squigler Game Development</li>
-          <li>AI + L2 Chain Integration</li>
-          <li>Merch Store</li>
-        </ul>
-      </div>
+  <section id="roadmap" class="section">
+    <h2>🗺️ Roadmap</h2>
+    <div class="feature-grid">
+      <div class="feature">✅ Launch Website</div>
+      <div class="feature">✅ Token Deployed on Ethereum</div>
+      <div class="feature">🚀 Presale Live Until June 30</div>
+      <div class="feature">🧑‍🤝‍🧑 10k+ Airdrops & Community Events</div>
+      <div class="feature">📃 CoinGecko & CMC Listings</div>
+      <div class="feature">🛒 CEX Listings Planned</div>
+      <div class="feature">🎮 Meme Games & NFTs</div>
+      <div class="feature">🤖 AI Bots for Community Tools</div>
     </div>
   </section>
-
   <footer>
-    &copy; 2025 Squigler Coin. All worms reserved. 🪱<br>
-    Follow us on <a href="https://twitter.com/SquiglerCoin" target="_blank">Twitter</a>
+    Made by the Squigler Army 🪱 | Follow us on <a href="https://twitter.com/SquiglerCoin">Twitter</a>
   </footer>
-
-  <script>
-    let web3;
-    let userAccount;
-    const presaleAddress = "0xB25d9ca06697356D9A440e904Ee3048021fb5Be8";
-
-    async function connectWallet() {
-      if (window.ethereum) {
-        web3 = new Web3(window.ethereum);
-        try {
-          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-          userAccount = accounts[0];
-          document.getElementById("walletAddress").textContent = `Connected: ${userAccount}`;
-        } catch (error) {
-          document.getElementById("walletAddress").textContent = '❌ Wallet connection denied.';
-        }
-      } else {
-        alert("MetaMask not found. Please install MetaMask!");
-      }
-    }
-
-    async function buyTokens() {
-      if (!userAccount) {
-        alert("Please connect your wallet first.");
-        return;
-      }
-
-      const ethAmount = prompt("Enter amount in ETH to buy SQUIG (1 ETH = 1,000,000 SQUIG):");
-      if (!ethAmount || isNaN(ethAmount)) {
-        alert("Invalid amount.");
-        return;
-      }
-
-      try {
-        await web3.eth.sendTransaction({
-          from: userAccount,
-          to: presaleAddress,
-          value: web3.utils.toWei(ethAmount, 'ether')
-        });
-        alert(`✅ You bought ${ethAmount * 1000000} $SQUIG`);
-      } catch (error) {
-        alert("❌ Transaction failed.");
-        console.error(error);
-      }
-    }
-  </script>
 </body>
 </html>
