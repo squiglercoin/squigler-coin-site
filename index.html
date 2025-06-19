@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squigler Coin | The Meme Coin Revolution 🪱</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background: radial-gradient(circle, #000000 0%, #111111 100%);
+      color: #ffd700;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #0a0a0a;
+      box-shadow: 0 0 20px gold;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    .intro {
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(255, 215, 0, 0.1);
+      border-radius: 1rem;
+      box-shadow: 0 0 25px gold;
+    }
+    .coin-img {
+      width: 200px;
+      animation: spin 8s linear infinite;
+      display: block;
+      margin: 2rem auto;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .btn {
+      font-family: 'Press Start 2P', cursive;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      font-size: 1rem;
+      background: gold;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 15px gold;
+      cursor: pointer;
+    }
+    section {
+      padding: 4rem 2rem;
+      background-color: #0d0d0d;
+      margin: 2rem 0;
+    }
+    section h2 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .feature-box {
+      background: #1a1a1a;
+      padding: 2rem;
+      border: 2px solid gold;
+      border-radius: 10px;
+      box-shadow: 0 0 20px gold;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0a0a0a;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚀 Squigler Coin: The Rise of the Meme Worm 🪱</h1>
+    <p>Your favorite meme token is crawling to the moon 🌕</p>
+  </header>
+
+  <div class="intro">
+    <img class="coin-img" src="https://raw.githubusercontent.com/squiglercoin/assets/main/squigcoin.png" alt="Squigler Coin">
+    <p>Squigler (SQUIG) is the next-generation meme coin built for the community. Fair launch. No team wallets. Just Squigs.</p>
+    <button class="btn" onclick="connectWallet()">🔌 Connect Wallet</button>
+    <button class="btn" onclick="buyTokens()">💰 Buy $SQUIG</button>
+    <p id="walletAddress">Wallet Not Connected</p>
+  </div>
+
+  <section>
+    <h2>💡 About Squigler</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>🐛 Meme Energy</h3>
+        <p>Powered by the internet’s funniest, squirmiest mascot.</p>
+      </div>
+      <div class="feature-box">
+        <h3>💸 Fair Launch</h3>
+        <p>No pre-mine, no VCs, just pure Squig love.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🎁 Community Airdrops</h3>
+        <p>Over 1,000,000 SQUIG already given out — and more coming!</p>
+      </div>
+      <div class="feature-box">
+        <h3>🔥 Tokenomics</h3>
+        <p>3% transaction fee funds growth, marketing, and worms.</p>
+      </div>
+      <div class="feature-box">
+        <h3>📈 Liquidity Plans</h3>
+        <p>Liquidity added and locked post-presale. Safe, secure, and smart.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🎮 Gamification</h3>
+        <p>Community contests, meme wars, and SQUIG battles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Roadmap</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>PHASE 1</h3>
+        <ul>
+          <li>Token Launch</li>
+          <li>1M Airdrop Campaign</li>
+          <li>Website + Presale Portal</li>
+          <li>Community Building</li>
+        </ul>
+      </div>
+      <div class="feature-box">
+        <h3>PHASE 2</h3>
+        <ul>
+          <li>Uniswap Listing</li>
+          <li>CMC/CG Listings</li>
+          <li>Meme & Design Contests</li>
+          <li>Flash Drops + Partnerships</li>
+        </ul>
+      </div>
+      <div class="feature-box">
+        <h3>PHASE 3</h3>
+        <ul>
+          <li>Worm NFTs</li>
+          <li>Squigler Game Development</li>
+          <li>AI + L2 Chain Integration</li>
+          <li>Merch Store</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Squigler Coin. All worms reserved. 🪱<br>
+    Follow us on <a href="https://twitter.com/SquiglerCoin" target="_blank">Twitter</a>
+  </footer>
+
+  <script>
+    let web3;
+    let userAccount;
+    const presaleAddress = "0xB25d9ca06697356D9A440e904Ee3048021fb5Be8";
+
+    async function connectWallet() {
+      if (window.ethereum) {
+        web3 = new Web3(window.ethereum);
+        try {
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          userAccount = accounts[0];
+          document.getElementById("walletAddress").textContent = `Connected: ${userAccount}`;
+        } catch (error) {
+          document.getElementById("walletAddress").textContent = '❌ Wallet connection denied.';
+        }
+      } else {
+        alert("MetaMask not found. Please install MetaMask!");
+      }
+    }
+
+    async function buyTokens() {
+      if (!userAccount) {
+        alert("Please connect your wallet first.");
+        return;
+      }
+
+      const ethAmount = prompt("Enter amount in ETH to buy SQUIG (1 ETH = 1,000,000 SQUIG):");
+      if (!ethAmount || isNaN(ethAmount)) {
+        alert("Invalid amount.");
+        return;
+      }
+
+      try {
+        await web3.eth.sendTransaction({
+          from: userAccount,
+          to: presaleAddress,
+          value: web3.utils.toWei(ethAmount, 'ether')
+        });
+        alert(`✅ You bought ${ethAmount * 1000000} $SQUIG`);
+      } catch (error) {
+        alert("❌ Transaction failed.");
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
